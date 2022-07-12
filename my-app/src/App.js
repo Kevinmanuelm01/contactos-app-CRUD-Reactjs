@@ -14,7 +14,7 @@ const url="http://localhost:3010/contactos/";
 
 class myApp extends Component{
 state={ //para almacenar la data
-  data:[], modalInsertar:false,modalEliminar:false, myformulario:{ id:'', name:'', email:'', descripcion:''   }, tipoModal:'', 
+  mydata:[], modalInsertar:false,modalEliminar:false, myformulario:{ id:'', name:'', email:'', descripcion:''   }, tipoModal:'', 
   
   
 }
@@ -24,7 +24,7 @@ peticionGet=()=>
 {
   axios.get(url).then(response=>
     {
-      this.setState({data: response.data});
+      this.setState({mydata: response.data});
     })
     .catch(error=>{ console.log(error.message);})
 }
@@ -126,7 +126,7 @@ return(
     </thead>
     <tbody>
 
-      {  this.state.data.map(contactos=>{
+      {  this.state.mydata.map(contactos=>{
              return(
               <tr>
               <td>{contactos.id}</td>
@@ -163,7 +163,7 @@ return(
                  <h5 class="modal-title">Datos Users</h5>
                   <div className="form-group">
                     <label htmlFor="id">Id User</label>
-                    <input className="form-control" type="text" name="id" id="id" readOnly onChange={this.handleChange}  value={myformulario?myformulario.id: this.state.data.length+1}    /*value={form?form.id: this.state.data.length+1}*//>
+                    <input className="form-control" type="text" name="id" id="id" readOnly onChange={this.handleChange}  value={myformulario?myformulario.id: this.state.mydata.length+1}    /*value={form?form.id: this.state.data.length+1}*//>
                     <br />
                     <label htmlFor="nombre">Nombre</label>
                     <input className="form-control" type="text" name="name" id="name" onChange={this.handleChange}    value={myformulario?myformulario.name: ''} /*value={form?form.nombre: ''}*//>
