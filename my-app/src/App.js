@@ -100,18 +100,13 @@ peticionDelete=()=>{
   })
 }
 
-desc(){
-  this.setState(this.state.myformulario.sort(function(b,a){ return b-a}))
-}
-
-
 
 render(){
   const {myformulario}=this.state; 
 return( 
   <div className="contenedor">
     <br></br>
-    <button className="btn btn-success"  onClick={()=> { this.setState({myformulario:null, tipoModal:'insertar'});    this.modalInsertar()}}>Add Contacts</button>
+    <button className="btn btn-success"  onClick={()=> { this.setState({myformulario:null, tipoModal:'insertar'}); this.modalInsertar()}}>Add Contacts</button>
     <br></br>
 
     <table className="table">
@@ -138,7 +133,7 @@ return(
         
               <button className="btn btn-primary"  onClick={()=>{this.seleccionarContacto(contactos); this.modalInsertar()}}  ><FontAwesomeIcon icon={faEdit}/></button> 
                 {"   "}
-                <button className="btn btn-danger"   onClick={()=>{this.seleccionarContacto(contactos); this.setState({modalEliminar:true})  }}   ><FontAwesomeIcon icon={faTrashAlt}/></button>
+                <button className="btn btn-danger"   onClick={()=>{this.seleccionarContacto(contactos); this.setState({modalEliminar:true}) }}><FontAwesomeIcon icon={faTrashAlt}/></button>
 
               </td>
               </tr>
@@ -179,8 +174,8 @@ return(
                 
                 <ModalFooter    /*botoenes del modal */    >
                  {this.state.tipoModal ==='insertar'?
-                 <button className="btn btn-success" onClick={()=>this.peticionPost()}> Insertar  </button>: 
-                 <button className="btn btn-primary"  onClick={()=>this.peticionPut()}   >  Actualizar</button>  } 
+                 <button className="btn btn-success" onClick={()=>this.peticionPost()}> Insertar</button>: 
+                 <button className="btn btn-primary"  onClick={()=>this.peticionPut()}> Actualizar</button>  } 
                  
                  <button className="btn btn-danger" onClick={()=>this.modalInsertar()}>Cancelar</button>
                 </ModalFooter>
@@ -196,7 +191,7 @@ return(
             </ModalBody>
             <ModalFooter>
               <button className="btn btn-danger" onClick={()=>this.peticionDelete()}>Sí</button>
-              <button className="btn btn-secundary" onClick={()=>this.setState({modalEliminar: false})}>No</button>
+              <button className="btn btn-secundary" onClick={()=>this.setState({modalEliminar:false})}>No</button>
             </ModalFooter>
           </Modal>
 
